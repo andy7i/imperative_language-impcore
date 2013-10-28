@@ -1,0 +1,11 @@
+; outputs the binomial coeffecient of (n, k)
+	; which is the number of ways of selecting k items 
+	; from a collection of n items without repetition.
+; valid inputs are where n > 0, k > 0
+(define choose (n k) 
+	(if (= k 0)
+		1
+		(if (= k n)
+			1
+			(+ (choose (- n 1) k) (choose (- n 1) (- k 1))))))	; by definition
+

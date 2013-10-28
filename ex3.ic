@@ -1,0 +1,7 @@
+; outputs the sum of all ints from m to n
+; valid inputs are where m =< n
+(define sigma (m n) 
+	(if (= m n) 
+		m
+		(+ m (sigma (+ m 1) n))))	; counts up from m to n
+

@@ -1,0 +1,11 @@
+; outputs the binary equivalent of a decimal int
+; valid inputs are all ints (positive and negative)
+(define binary (m)
+	(if (< m 0)
+		(* -1 (binary (* -1 m)))	; computes negative numbers
+		(if (= m 0)
+			0
+			(+ (exp 10 (log 2 m)) (binary (- m (exp 2 (log 2 m))))))))
+			; finds the largest binary digit, subtracts the amount
+			; and recurses until the entire number is created.
+

@@ -1,0 +1,9 @@
+; outputs the mth digit of the Fibonacci sequence
+; valid inputs are positive ints and 0
+(define fib (m)
+	(if (< m 1)	; catch illogical inputs and start fib(0) at 0.
+		0
+		(if (= m 1)
+			1
+			(+ (fib (- m 2)) (fib (- m 1))))))	; by definition
+

@@ -1,0 +1,11 @@
+(sigma 12 82) ;3337
+(exp 2 8)	; 256
+(log 4 10)	; 1
+(log 3 100)	; 4
+(choose 20 3) ; 1140
+(fib 12)	; 144
+(prime? 43) ; 1
+(nthprime 43) ; 191
+(sumprimes 43) ; 3638
+(relprime? 32 14) ; 0
+(binary 168) ; 10101000

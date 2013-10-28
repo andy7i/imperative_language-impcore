@@ -1,0 +1,14 @@
+; outputs the result of m^n
+; valid inputs are where m >= 0, n >= 0
+(define exp (m n) 
+	(if (= n 0)
+		1
+		(* m (exp m (- n 1)))))	; multiplies m, n times
+
+; outputs the result of (log (base m) n), rounded down to the nearest int
+; valid inputs are where m > 1 and n > 0
+(define log (m n)
+	(if (> m n)
+		0
+    	(+ 1 (log m (/ n m)))))	; checks how many times m goes into n
+

@@ -1,0 +1,57 @@
+; outputs 1 (true) if n is a prime 0 (false) otherwise
+; valid input is any int
+(define prime? (n) 
+	(if (< n 2)
+		0	; false -> catch illogical input
+		(if (= n 2)
+			1	; true
+			(prime?Helper n 2))))	; start checking if prime with 2
+
+; helper function for prime?()
+(define prime?Helper (n divider)
+	(if (= (mod n divider) 0)
+		0	; false
+		(if (> (* divider divider) n)
+			1	; true if divider > sqrt(n) --> speeds up processing
+			(prime?Helper n (+ divider 1)))))
+
+; outputs the nth prime number
+; valid inputs are positive ints
+(define nthprime (n)
+	(if (< n 0)	; catch illogical input
+		0
+		(if (= n 1)
+			2	; first prime, only prime that is even
+			(nthprimeHelper 3 (- n 1)))))
+
+; helper function for nthprime()
+(define nthprimeHelper (currentNum n)
+	(if (prime? currentNum)
+		(if (= n 1)	; counts down n until the original n is 
+			currentNum
+			(nthprimeHelper (+ currentNum 2) (- n 1)))
+		(nthprimeHelper (+ currentNum 2) n)))	; only checks odd numbers
+
+; outputs the sum of the first n primes
+; valid inputs are positive ints
+(define sumprimes (n)
+	(if (< n 1)
+		0
+		(+ (nthprime n) (sumprimes (- n 1)))))
+
+; outputs the greatest common denominator
+; valid inputs are positive ints
+; used in relprime?()
+; from Programming Languages: Build, Prove, and Compare by Normal Ramsey, p12
+(define gcd (m n)
+	(if (= n 0)
+		m
+		(gcd n (mod m n))))
+
+; outputs whether m and n are relatively prime (not sharing any prime factors)
+; valid inputs are positive ints
+(define relprime? (m n)
+	(if (= (gcd m n) 1)
+		1	; true (is relatively prime) if the gcd is 1
+		0))	; false
+
